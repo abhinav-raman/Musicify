@@ -26,9 +26,9 @@ const Header = () => {
 					<img src={logoIcon} alt="Logo" className="h-full w-auto cursor-pointer" onClick={() => history.push("/")} />
 				</div>
 			</div>
-			<h6 className="font-semibold text-3xl" title="Musicify">
+			<h1 className="font-semibold text-4xl text-green-900" title="Musicify">
 				Musicify
-			</h6>
+			</h1>
 			<div className="w-48 flex justify-evenly">
 				{context.isLoggedIn && (
 					<Fragment>
