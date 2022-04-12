@@ -1,4 +1,4 @@
-# ![logo](/src/assets/images/logo-icon.png) [Musicify]()
+# <a href="url"><img src="/src/assets/images/logo-icon.png" align="left" height="48" width="48" ></a> [Musicify]()
 
 Musicify is an app that lets you upload your favorite mp3 files and makes them available to every user.
 
