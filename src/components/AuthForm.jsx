@@ -166,7 +166,7 @@ const AuthForm = () => {
 	return (
 		<section className="h-full flex justify-center items-center">
 			<div className="dark-theme w-2/4 max-w-lg p-8 shadow-card-custom">
-				<h2 className="w-full dark:bg-slate-500 text-center mb-4 text-2xl text-green-600 font-semibold">
+				<h2 className="w-full dark:bg-slate-500 text-center mb-4 text-2xl text-green-700 font-semibold">
 					{showSignInPage ? "Sign In" : "Log In"}
 				</h2>
 				<form onSubmit={submitHandler} className="w-full">

@@ -172,7 +172,7 @@ const UploadForm = () => {
 
 	const uploadForm = (
 		<Fragment>
-			<h2 className="w-full text-center mb-4 text-2xl text-green-600 font-semibold">
+			<h2 className="w-full text-center mb-4 text-2xl text-green-700 font-semibold">
 				Upload A Track
 			</h2>
 			<form onSubmit={submitHandler} className="w-full">
