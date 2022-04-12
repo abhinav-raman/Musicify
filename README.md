@@ -24,6 +24,21 @@ npm install or yarn install
 
 
 ```
+## Dependencies
+1. [React](https://reactjs.org/)
+2. [React Router](https://reactrouter.com/)
+3. [React Player](https://www.npmjs.com/package/react-player)
+4. [Tailwind CSS](https://tailwindcss.com/)
+5. [Firebase](https://firebase.google.com/)
+
+## Features
+
+1. Authentication with signin/login feature.
+2. Custom input components.
+3. Media player  for playing files.
+3. Upload *.mp3 files and their validation.
+4. Music data is managed via storing metadata in firebase realtime database.
+
 
 ## Usage
 
@@ -33,7 +48,6 @@ npm install or yarn install
 4. Landing page contains mp3 files.
 5. User can also upload their own mp3 files to the database by through upload feature after logging in.
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as 
+
+
