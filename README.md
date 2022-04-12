@@ -1,4 +1,4 @@
-# ![alt text](https://github.com/abhinav-raman/musicify/master/src/assets/images/logo-icon.png) [Musicify]()
+# ![logo](/src/assets/images/logo-icon.png) [Musicify]()
 
 Musicify is an app that lets you upload your favorite mp3 files and makes them available to every user.
 
