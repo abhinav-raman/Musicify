@@ -1,4 +1,4 @@
-import React, { useState, useRef, Fragment } from "react";
+import React, { useState, useRef, Fragment, useContext } from "react";
 import { uploadBytes, ref } from "firebase/storage";
 
 import { getItemDownloadUrl, storageRef } from "../firebase/FirebaseStorage";
@@ -7,13 +7,15 @@ import { setDataToDatabase } from "../firebase/FirebaseDatabase";
 import Input from "./UI/Input";
 import Button from "./UI/Button";
 
-import successGif from "../assets/gifs/success.gif";
+import successIcon from "../assets/images/tick-icon.png";
 import spinner from "../assets/images/spinner-icon.svg";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import ThemeContext, { THEMES } from "../context/theme-context";
 
 const UploadForm = () => {
 	const fileSelectElementRef = useRef(null);
 	const history = useHistory();
+	const themeContext = useContext(ThemeContext);
 
 	const [trackName, setTrackName] = useState("");
 	const [artistName, setArtistName] = useState("");
@@ -172,7 +174,11 @@ const UploadForm = () => {
 
 	const uploadForm = (
 		<Fragment>
-			<h2 className="w-full text-center mb-4 text-2xl text-green-700 font-semibold">
+			<h2
+				className={`w-full text-center mb-4 text-2xl font-semibold ${
+					THEMES[themeContext.theme].primaryTextColor
+				}`}
+			>
 				Upload A Track
 			</h2>
 			<form onSubmit={submitHandler} className="w-full">
@@ -201,15 +207,20 @@ const UploadForm = () => {
 						className={
 							"duration-300 flex justify-center items-center w-full h-20 mb-2 cursor-pointer border-dashed border-2 text-slate-400 " +
 							(errorInForm && !isFileSelected
-								? " bg-red-50 border-red-500 hover:bg-red-100"
-								: "bg-green-50 border-green-500 hover:bg-green-100")
+								? "border-red-500"
+								: "border-green-500")
 						}
 						onClick={() => fileSelectElementRef.current.click()}
 					>
 						CLick to select track (*.mp3 format)
 					</section>
 				) : (
-					<div className="w-full h-20 flex justify-between items-center mb-2 p-4 bg-green-100">
+					<div
+						className={
+							"w-full h-20 flex justify-between items-center mb-2 p-4 " +
+							THEMES[themeContext.theme].tertiaryBackgroundColor
+						}
+					>
 						<p className="">
 							File selected:{" "}
 							<span className="font-medium">
@@ -220,37 +231,16 @@ const UploadForm = () => {
 							className="w-8 h-8 cursor-pointer duration-100 rounded-sm"
 							onClick={fileRemoveHandler}
 						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								x="0px"
-								y="0px"
-								width="30"
-								height="30"
-								viewBox="0 0 172 172"
-								style={{ fill: "#000000" }}
+							<p
+								className={
+									"text-2xl " +
+									(themeContext.theme === "light"
+										? "text-red-700"
+										: "text-red-400")
+								}
 							>
-								<g
-									fill="none"
-									fillRule="nonzero"
-									stroke="none"
-									strokeWidth="1"
-									strokeLinecap="butt"
-									strokeLinejoin="miter"
-									strokeMiterlimit="10"
-									strokeDasharray=""
-									strokeDashoffset="0"
-									fontFamily="none"
-									fontWeight="none"
-									fontSize="none"
-									textAnchor="none"
-									style={{ mixBlendMode: "normal" }}
-								>
-									<path d="M0,172v-172h172v172z" fill="none"></path>
-									<g fill="#ef4444">
-										<path d="M40.13333,22.93333c-1.46702,0 -2.93565,0.55882 -4.05365,1.67969l-11.46667,11.46667c-2.24173,2.24173 -2.24173,5.87129 0,8.10729l41.81302,41.81302l-41.81302,41.81302c-2.24173,2.24173 -2.24173,5.87129 0,8.10729l11.46667,11.46667c2.24173,2.24173 5.87129,2.24173 8.10729,0l41.81302,-41.81302l41.81302,41.81302c2.236,2.24173 5.87129,2.24173 8.10729,0l11.46667,-11.46667c2.24173,-2.24173 2.24173,-5.87129 0,-8.10729l-41.81302,-41.81302l41.81302,-41.81302c2.24173,-2.236 2.24173,-5.87129 0,-8.10729l-11.46667,-11.46667c-2.24173,-2.24173 -5.87129,-2.24173 -8.10729,0l-41.81302,41.81302l-41.81302,-41.81302c-1.12087,-1.12087 -2.58663,-1.67969 -4.05365,-1.67969z"></path>
-									</g>
-								</g>
-							</svg>
+								&#10006;
+							</p>
 						</div>
 					</div>
 				)}
@@ -261,8 +251,13 @@ const UploadForm = () => {
 					</Button>
 				</div>
 
-        {errorInForm && (
-					<p className="w-full text-red-500 text-center">
+				{errorInForm && (
+					<p
+						className={
+							"w-full text-center " +
+							(themeContext.theme === "light" ? "text-red-700" : "text-red-400")
+						}
+					>
 						{errorInFormMessage}
 					</p>
 				)}
@@ -272,17 +267,34 @@ const UploadForm = () => {
 
 	const fileUploadedSuccessfully = (
 		<Fragment>
-			<h2 className="w-full text-center mb-4 text-2xl text-green-600 font-semibold">
+			<h2
+				className={
+					"w-full text-center mb-4 text-2xl font-semibold " +
+					THEMES[themeContext.theme].primaryTextColor
+				}
+			>
 				File Uploaded Successfully
 			</h2>
-			<div className="h-32">
-				<img src={successGif} alt="success" className="mx-auto h-full"></img>
+			<div className="h-20">
+				<img src={successIcon} alt="success" className="mx-auto h-full"></img>
 			</div>
-			<h4 className="text-center">{trackName} is added to the collection</h4>
-			<h2 className="text-center mt-4">
+			<h4
+				className={
+					"text-center " + THEMES[themeContext.theme].secondaryTextColor
+				}
+			>
+				{trackName} is added to the collection
+			</h4>
+			<h2
+				className={
+					"text-center mt-4 " + THEMES[themeContext.theme].secondaryTextColor
+				}
+			>
 				Go back to{" "}
 				<span
-					className="cursor-pointer text-green-600"
+					className={
+						"cursor-pointer " + THEMES[themeContext.theme].linkedTextColor
+					}
 					onClick={navigateHomeHandler}
 				>
 					Home
@@ -293,7 +305,12 @@ const UploadForm = () => {
 
 	const fileUploadingLoader = (
 		<Fragment>
-			<h2 className="w-full text-center mb-4 text-2xl text-green-600 font-semibold">
+			<h2
+				className={
+					"w-full text-center mb-4 text-2xl font-semibold " +
+					THEMES[themeContext.theme].primaryTextColor
+				}
+			>
 				File is Uploading...
 			</h2>
 			<div className="h-32">
@@ -308,7 +325,13 @@ const UploadForm = () => {
 
 	return (
 		<section className="h-full flex justify-center items-center">
-			<div className="dark-theme w-2/4 max-w-lg p-8 shadow-card-custom">
+			<div
+				className={`w-2/4 max-w-lg p-8 ${
+					themeContext.theme === "light"
+						? "shadow-card-custom-light"
+						: "shadow-card-custom-dark"
+				} ${THEMES[themeContext.theme].secondaryBackgroundColor}`}
+			>
 				{isFileUploading
 					? fileUploadingLoader
 					: isFileUploaded

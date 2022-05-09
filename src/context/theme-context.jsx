@@ -4,6 +4,7 @@ export const THEMES = {
 	light: {
 		primaryBackgroundColor: "white",
 		secondaryBackgroundColor: "bg-slate-100",
+    tertiaryBackgroundColor: "bg-slate-200",
 		primaryTextColor: "text-green-700",
 		secondaryTextColor: "text-slate-900",
 		linkedTextColor: "text-sky-600",
@@ -12,6 +13,7 @@ export const THEMES = {
 	dark: {
 		primaryBackgroundColor: "bg-slate-800",
 		secondaryBackgroundColor: "bg-slate-700",
+    tertiaryBackgroundColor: "bg-slate-500",
 		primaryTextColor: "text-green-300",
 		secondaryTextColor: "text-slate-50",
 		linkedTextColor: "text-sky-300",
