@@ -15,7 +15,7 @@ const App = () => {
 	return (
 		<Fragment>
 			<Header />
-			<main className={`h-[calc(100%-5rem)] antialiased ${THEMES[themeContext.theme].backgroundColor}`}>
+			<main className={`h-[calc(100%-5rem)] antialiased ${THEMES[themeContext.theme].primaryBackgroundColor}`}>
 				<Switch>
 					<Route path="/auth">
 						{!authContext.isLoggedIn ? (

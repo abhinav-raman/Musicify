@@ -12,7 +12,7 @@ module.exports = {
 			},
 			boxShadow: {
 				"card-custom-light": "0 15px 30px #aaa",
-				"card-custom-dark": "0 15px 30px #333",
+				"card-custom-dark": "0 15px 30px #222222",
 			},
 		},
 		fontFamily: {
@@ -28,7 +28,10 @@ module.exports = {
 				"Helvetica Neue",
 				"sans-serif",
 			],
-		}
+		},
+    color: {
+      'white': '#ffffff'
+    }
 	},
   darkMode: 'dark-theme',
 	plugins: [],

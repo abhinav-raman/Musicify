@@ -136,10 +136,17 @@ const AuthForm = () => {
 	);
 
 	const pageToggleTextField = showSignInPage ? (
-		<p className="w-full text-center mt-4">
+		<p
+			className={
+				"w-full text-center mt-4 " +
+				THEMES[themeContext.theme].secondaryTextColor
+			}
+		>
 			{"Already a user?"}
 			<span
-				className="text-blue-400 cursor-pointer"
+				className={
+					"cursor-pointer " + THEMES[themeContext.theme].linkedTextColor
+				}
 				onClick={() => setShowSignInPage(false)}
 			>
 				{" Log In with existing credentials"}
@@ -177,7 +184,7 @@ const AuthForm = () => {
 					themeContext.theme === "light"
 						? "shadow-card-custom-light"
 						: "shadow-card-custom-dark"
-				}`}
+				} ${THEMES[themeContext.theme].secondaryBackgroundColor}`}
 			>
 				<h2
 					className={`w-full text-center mb-4 text-2xl font-semibold ${
