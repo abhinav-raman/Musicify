@@ -59,7 +59,7 @@ const MusicAlbums = ({ searchValue }) => {
 	);
 
 	return (
-		<section className="w-4/5 mx-auto my-8 dark:bg-black">
+		<section className="w-10/12 mx-auto my-8 dark:bg-black">
 			{isLoading ? (
 				loader
 			) : showNoDataMessage ? (

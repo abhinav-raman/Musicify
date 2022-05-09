@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 export const THEMES = {
 	light: {
 		primaryBackgroundColor: "white",
-		secondaryBackgroundColor: "bg-slate-50",
+		secondaryBackgroundColor: "bg-slate-100",
 		primaryTextColor: "text-green-700",
 		secondaryTextColor: "text-slate-900",
 		linkedTextColor: "text-sky-600",
+    secondaryBorderColor: "border-slate-100"
 	},
 	dark: {
 		primaryBackgroundColor: "bg-slate-800",
@@ -14,6 +15,7 @@ export const THEMES = {
 		primaryTextColor: "text-green-300",
 		secondaryTextColor: "text-slate-50",
 		linkedTextColor: "text-sky-300",
+    secondaryBorderColor: "border-slate-700"
 	},
 };
 
