@@ -11,7 +11,8 @@ module.exports = {
 				360: "360deg",
 			},
 			boxShadow: {
-				"card-custom": "0 15px 30px #ccc",
+				"card-custom-light": "0 15px 30px #aaa",
+				"card-custom-dark": "0 15px 30px #333",
 			},
 		},
 		fontFamily: {

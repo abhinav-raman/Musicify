@@ -5,9 +5,11 @@ import AuthContext from "../context/auth-context";
 import Button from "./UI/Button";
 import Input from "./UI/Input";
 import loaderGif from "../assets/gifs/loading.gif";
+import ThemeContext, { THEMES } from "../context/theme-context";
 
 const AuthForm = () => {
-	const context = useContext(AuthContext);
+	const authContext = useContext(AuthContext);
+	const themeContext = useContext(ThemeContext);
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -43,8 +45,8 @@ const AuthForm = () => {
 		setShowSpinner(true);
 		await loginUser(email, password)
 			.then((response) => {
-        setShowSpinner(false);
-				context.onLogin(response.user.accessToken);
+				setShowSpinner(false);
+				authContext.onLogin(response.user.accessToken);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -135,7 +137,6 @@ const AuthForm = () => {
 
 	const pageToggleTextField = showSignInPage ? (
 		<p className="w-full text-center mt-4">
-			{/* {`${showSignInPage ? "Already" : "Not"} a user? `} */}
 			{"Already a user?"}
 			<span
 				className="text-blue-400 cursor-pointer"
@@ -145,11 +146,17 @@ const AuthForm = () => {
 			</span>
 		</p>
 	) : (
-		<p className="w-full text-center mt-4">
-			{/* {`${showSignInPage ? "Already" : "Not"} a user? `} */}
+		<p
+			className={
+				"w-full text-center mt-4 " +
+				THEMES[themeContext.theme].secondaryTextColor
+			}
+		>
 			{"Not a user?"}
 			<span
-				className="text-blue-400 cursor-pointer"
+				className={
+					"cursor-pointer " + THEMES[themeContext.theme].linkedTextColor
+				}
 				onClick={() => setShowSignInPage(true)}
 			>
 				{" Sign In with new credentials"}
@@ -165,8 +172,18 @@ const AuthForm = () => {
 
 	return (
 		<section className="h-full flex justify-center items-center">
-			<div className="dark-theme w-2/4 max-w-lg p-8 shadow-card-custom">
-				<h2 className="w-full dark:bg-slate-500 text-center mb-4 text-2xl text-green-700 font-semibold">
+			<div
+				className={`w-2/4 max-w-lg p-8 ${
+					themeContext.theme === "light"
+						? "shadow-card-custom-light"
+						: "shadow-card-custom-dark"
+				}`}
+			>
+				<h2
+					className={`w-full text-center mb-4 text-2xl font-semibold ${
+						THEMES[themeContext.theme].primaryTextColor
+					}`}
+				>
 					{showSignInPage ? "Sign In" : "Log In"}
 				</h2>
 				<form onSubmit={submitHandler} className="w-full">

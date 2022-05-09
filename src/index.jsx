@@ -5,12 +5,15 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import { AuthContextProvider } from "./context/auth-context";
+import { ThemeContextProvider } from "./context/theme-context";
 
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<AuthContextProvider>
-				<App />
+				<ThemeContextProvider>
+					<App />
+				</ThemeContextProvider>
 			</AuthContextProvider>
 		</BrowserRouter>
 	</React.StrictMode>,

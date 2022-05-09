@@ -6,14 +6,16 @@ import Content from "./components/Content";
 import Header from "./components/Header";
 import UploadForm from "./components/UploadForm";
 import AuthContext from "./context/auth-context";
+import ThemeContext, { THEMES } from "./context/theme-context";
 
 const App = () => {
 	const authContext = useContext(AuthContext);
+	const themeContext = useContext(ThemeContext);
 
 	return (
 		<Fragment>
 			<Header />
-			<main className="h-[calc(100%-5rem)]">
+			<main className={`h-[calc(100%-5rem)] antialiased ${THEMES[themeContext.theme].backgroundColor}`}>
 				<Switch>
 					<Route path="/auth">
 						{!authContext.isLoggedIn ? (
